@@ -1,16 +1,11 @@
 import { defineStore } from 'pinia';
 import axios, { AxiosResponse } from 'axios';
-
-type Products = null | [];
+import RawProducts from '../../ts/Types/Product/TypeRawProducts';
+import ProductsResponse from '../../ts/Interfaces/HttpResponse/ProductsResponse';
 
 interface State {
-    products: Products,
+    products: RawProducts,
 }
-
-interface ProductsResponse {
-    products: Products
-}
-
 
 const useShopStore = defineStore('shop', {
     state: (): State => ({
