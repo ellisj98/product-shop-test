@@ -17,7 +17,7 @@ const config: Config = {
       }),
       colors: {
           ...tailwindColours,
-          'body': 'gray',
+          'body': '#333',
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       backgroundColor: (theme: any) => ({
@@ -25,7 +25,7 @@ const config: Config = {
           transparent: 'transparent',
       }),
       fontFamily: {
-          'body': ['Inter', 'sans-serif'],
+          'body': ['Montserrat', 'sans-serif'],
       },
       fontSize: {
           '2xs': '0.6rem',
