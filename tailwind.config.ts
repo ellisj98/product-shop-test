@@ -54,7 +54,7 @@ const config: Config = {
           },
           spacing: {
               default: '2rem',
-              paragraph: '1.5rem',
+              paragraph: '1rem',
               heading: '1rem',
               gutter: '1.25rem',
               'gutter-lg': '2rem',

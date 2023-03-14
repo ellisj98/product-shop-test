@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import useShopStore from '../stores/shop';
+import useShopStore from "../stores/shop";
+import LoadingProducts from "./LoadingProducts.vue";
+import ProductGrid from "./ProductGrid.vue";
 const shopStore = useShopStore();
-const products = shopStore.getProducts();
+// Make call to get products.
+shopStore.getProducts();
 </script>
 
 <template>
-  <h1 class="u-text-3xl u-font-bold u-underline">
-    Hello world!
-  </h1>
+    <div class="u-py-10">
+        <div class="o-wrapper">
+            <div class="o-grid">
+                <div class="o-grid__col from-tvl:o-grid__col-9">
+                    <loading-products v-if="!shopStore.productsFetched" />
+                    <product-grid :products="shopStore.products" v-else />
+                </div>
+                <div class="o-grid__col from-tvl:o-grid__col-3">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
