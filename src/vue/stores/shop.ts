@@ -16,6 +16,11 @@ const useShopStore = defineStore('shop', {
     state: (): State => ({
         products: null,
     }),
+    getters: {
+        productsFetched: (state) : boolean => {
+            return state.products !== null;
+        },
+    },
     actions: {
         async getProducts(): Promise<AxiosResponse<ProductsResponse>> {
             try {
