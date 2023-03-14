@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import RawProducts from '../../ts/Types/Product/TypeRawProducts';
 import ProductsResponse from '../../ts/Interfaces/HttpResponse/ProductsResponse';
 import RawProductData from '../../ts/Types/Product/RawProductData';
+import RawProduct from '../../ts/Interfaces/Product/RawProduct';
 
 interface State {
     products: RawProducts,
@@ -33,7 +34,10 @@ const useShopStore = defineStore('shop', {
                 throw error;
             }
         },
-    }
+        pushProductToBasket(product: RawProduct) {
+            this.productsInBasket.push(product);
+        }
+    },
 });
 
 export { State };

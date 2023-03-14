@@ -2,7 +2,11 @@
 import currencyFormatter from '../../ts/Utilities/General/currencyFormatter';
 import RawProduct from ".../Types/Product/RawProduct";
 import ProductVariant from ".../Types/Product/ProductVariant";
-import { PropType } from 'vue';
+import { PropType, ComputedRef, computed } from 'vue';
+import useShopStore from "../stores/shop";
+
+const shopStore = useShopStore();
+
 const props = defineProps({
     product: {
         type: Object as PropType<RawProduct>,
@@ -14,6 +18,11 @@ const productVariantToShow: ProductVariant = props.product.variants[0];
 const productVariantPrice: number = productVariantToShow.price;
 const productImage: string = props.product.images[0].src;
 const productTitle: string = productVariantToShow.title;
+
+const productAddedToBasket: ComputedRef<boolean> = computed(() : boolean => {
+    return shopStore.productsInBasket.includes(props.product);
+});
+
 </script>
 
 <template>
@@ -29,7 +38,8 @@ const productTitle: string = productVariantToShow.title;
             </div>
         </div>
         <div class="u-mt-auto u-flex">
-            <button class="o-button u-w-1/2">Add to cart</button>
+            <button class="o-button u-w-1/2" @click="shopStore.pushProductToBasket(product)" v-if="!productAddedToBasket">Add to cart</button>
+            <button class="o-button u-w-1/2" v-else disabled>Added to cart</button>
             <button class="o-button o-button--neutral u-w-1/2">Quick view</button>
         </div>
    </div>
