@@ -4,7 +4,7 @@ const image = asset('bg.jpg');
 </script>
 
 <template>
-    <div class="u-ratio-page-header u-relative">
+    <div class="u-ratio-page-header u-relative" role="banner">
         <img :src="image" alt="Page graphic image" class="u-cover" />
     </div>
 </template>
