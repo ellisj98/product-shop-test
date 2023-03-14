@@ -1,0 +1,11 @@
+@responsive {
+    .o-wrapper {
+        width: $wrapper-width;
+        max-width: $wrapper-max-width;
+        position: relative;
+        margin: 0 auto;
+        @screen to-ts {
+            max-width: $wrapper-max-width-mobile;
+        }
+    }
+}

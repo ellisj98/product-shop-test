@@ -1,0 +1,169 @@
+@use 'sass:math';
+
+// Common styles for psuedo elements
+@mixin psuedo($position: absolute) {
+    content: '';
+    display: block;
+    position: $position;
+}
+
+// Make an element a relative width/height, as long as it's content doesn't overflow
+@mixin aspect-ratio($arglist... /* $ratio or $width, $height */) {
+    $map: keywords($arglist);
+    $height: map-get($map, height) or nth-or-null($arglist, 2);
+    $width: map-get($map, width) or nth-or-null($arglist, 1);
+    $ratio: map-get($map, ratio) or if($width and $height, math.div($width, $height), nth-or-null($arglist, 1)) or 1;
+    $padding: percentage(math.div(1, $ratio * 100));
+    &:before {
+        content: '';
+        float: left;
+        padding-bottom: $padding;
+        margin-right: -100%;
+    }
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// Create CSS Triangles
+@mixin triangle($direction, $color: currentcolor, $size: 1em, $skew: 1) {
+    @if not index(top right bottom left, $direction) {
+        @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+    }
+    width: 0;
+    height: 0;
+    border-#{$direction}: ($size * $skew) solid $color;
+
+    $perpendicular-borders: $size solid transparent;
+
+    @if $direction == top or $direction == bottom {
+        border-left: $perpendicular-borders;
+        border-right: $perpendicular-borders;
+    } @else if $direction == right or $direction == left {
+        border-bottom: $perpendicular-borders;
+        border-top: $perpendicular-borders;
+    }
+}
+
+// Make element fill its nearest positioned parent
+@mixin filler($position: absolute) {
+    position: $position;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+// Set object fit and include polyfill hack
+@mixin object-fit($fit: cover, $position: null) {
+    object-fit: $fit;
+    @if ($position) {
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+
+// Styles to force browser to use GPU (normally to fix jank effect)
+@mixin gpu-styles {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+// style placeholders
+@mixin placeholder($nest: false) {
+    @if ($nest) {
+        ::-webkit-input-placeholder {
+            @content;
+        }
+        ::-moz-placeholder {
+            @content;
+        }
+        :-ms-input-placeholder {
+            @content;
+        }
+    } @else {
+        &::-webkit-input-placeholder {
+            @content;
+        }
+        &::-moz-placeholder {
+            @content;
+        }
+        &:-ms-input-placeholder {
+            @content;
+        }
+    }
+}
+
+@mixin heading-tags() {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @content;
+    }
+}
+
+@mixin overlay {
+    @include filler(fixed);
+    z-index: theme('zIndex.overlay');
+    opacity: 0;
+    visibility: hidden;
+    padding: calc(#{theme('spacing.8')} + env(safe-area-inset-top)) 0 theme('spacing.8');
+    background-color: rgba(black, 0.5);
+    transition-duration: theme('transitionDuration.500');
+    transition-property: opacity, visibility;
+    &.is-open {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@mixin remove-last-child-margin {
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin choice-active {
+    border-color: inherit;
+}
+
+@mixin do-menu-toggle($width) {
+    $menu-toggle-height: $width * $menu-toggle-ratio;
+    $menu-toggle-height-half: math.div($menu-toggle-height, 2);
+    $menu-toggle-bar-height-half: math.div($menu-toggle-bar-height, 2);
+    $menu-toggle-center: #{($menu-toggle-height-half - $menu-toggle-bar-height-half)};
+    &__inner {
+        width: $width;
+        height: $menu-toggle-height;
+    }
+    &__bar {
+        &--first {
+            top: 0;
+            #{$navigation-menu-open-class} & {
+                transform: translateY(#{$menu-toggle-center}) rotate(135deg);
+            }
+        }
+        &--second {
+            top: $menu-toggle-center;
+            #{$navigation-menu-open-class} & {
+                opacity: 0;
+                transform: translate3d(-50px, 0, 0);
+            }
+        }
+        &--third {
+            bottom: 0;
+            #{$navigation-menu-open-class} & {
+                transform: translateY(-#{$menu-toggle-center}) rotate(-135deg);
+            }
+        }
+    }
+}

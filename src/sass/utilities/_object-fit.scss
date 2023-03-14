@@ -1,0 +1,33 @@
+.u-cover {
+    @extend .u-fill;
+    @include object-fit;
+    &--top {
+        @include object-fit($position: top);
+    }
+    &--bottom {
+        @include object-fit($position: bottom);
+    }
+    &--left {
+        @include object-fit($position: left);
+    }
+    &--right {
+        @include object-fit($position: right);
+    }
+}
+
+.u-contain {
+    @extend .u-fill;
+    @include object-fit($fit: contain);
+    &--top {
+        @include object-fit($fit: contain, $position: top);
+    }
+    &--bottom {
+        @include object-fit($fit: contain, $position: bottom);
+    }
+    &--left {
+        @include object-fit($fit: contain, $position: left);
+    }
+    &--right {
+        @include object-fit($fit: contain, $position: right);
+    }
+}

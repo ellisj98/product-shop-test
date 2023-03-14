@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+// Fonts
+$font-size-base: 16px;
+
+// Wrappers
+$wrapper-width: 1200px;
+$wrapper-width-lg: 1440px;
+$wrapper-width-xs: 800px;
+$wrapper-width-sm: 1050px;
+$wrapper-max-width: calc(100% - (theme('spacing.10')));
+$wrapper-max-width-mobile: calc(100% - (theme('spacing.default')));
+
+// Navigation/Menu Toggle
+$navigation-menu-open-class: '.has-menu-open';
+$menu-toggle-ratio: math.div(33, 40);
+
+$menu-toggle-width: 20px;
+$menu-toggle-height: $menu-toggle-width * $menu-toggle-ratio;
+
+$menu-toggle-height--half: math.div($menu-toggle-height, 2);
+$menu-toggle-bar-length: 3;
+$menu-toggle-bar-height: 2px;
+$menu-toggle-bar-height--half: math.div($menu-toggle-bar-height, 2);
+$menu-toggle-center: #{($menu-toggle-height--half - $menu-toggle-bar-height--half)};

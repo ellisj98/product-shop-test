@@ -1,0 +1,46 @@
+summary,
+details {
+    box-sizing: border-box;
+}
+
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select,
+button {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+img {
+    @include gpu-styles;
+}
+
+fieldset {
+    border: 0;
+}
+
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+input[type='file']::-webkit-file-upload-button,
+button {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    line-height: theme('lineHeight.body');
+    letter-spacing: theme('letterSpacing.wide');
+    transition: theme('transitionDuration.default');
+    color: inherit;
+    font-weight: theme('fontWeight.normal');
+    text-transform: inherit;
+}
+
+label {
+    cursor: pointer;
+    display: block;
+}
+
+ul,
+ol {
+    max-width: 100%;
+}

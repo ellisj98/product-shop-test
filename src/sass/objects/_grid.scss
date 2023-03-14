@@ -1,0 +1,53 @@
+@use 'sass:math';
+
+@responsive {
+    .o-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calc(theme('spacing.gutter') / -2);
+        margin-right: calc(theme('spacing.gutter') / -2);
+        @apply u--mb-gutter;
+        > * {
+            flex-basis: 100%;
+            max-width: 100%;
+            flex-grow: 1;
+            padding: 0 calc(#{theme('spacing.gutter')} / 2);
+            margin-bottom: theme('spacing.gutter');
+        }
+        &__col {
+            @for $columns from 1 through 12 {
+                &-#{$columns} {
+                    $amount: math.div($columns, 12);
+                    $column-width: decimal-round($amount) * 100%;
+                    flex-basis: $column-width;
+                    max-width: $column-width;
+                    &--ol {
+                        margin-left: $column-width;
+                    }
+                    &--or {
+                        margin-right: $column-width;
+                    }
+                }
+            }
+        }
+        &--y-lg {
+            @apply u--mb-gutter-lg;
+            > * {
+                margin-bottom: theme('spacing.gutter-lg');
+            }
+        }
+        &--y-xl {
+            @apply u--mb-gutter-xl;
+            > * {
+                margin-bottom: theme('spacing.gutter-xl');
+            }
+        }
+        &--x-lg {
+            margin-left: calc(theme('spacing.gutter-lg') / -2);
+            margin-right: calc(theme('spacing.gutter-lg') / -2);
+            > * {
+                padding: 0 calc(#{theme('spacing.gutter-lg')} / 2);
+            }
+        }
+    }
+}

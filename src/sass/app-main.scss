@@ -1,0 +1,30 @@
+@import 'config/variables';
+@import 'config/functions';
+@import 'config/mixins';
+
+@tailwind base;
+
+@layer base {
+    @import 'base/reset';
+    @import 'base/global';
+    @import 'base/typography';
+}
+
+@tailwind components;
+
+@layer components {
+    @import 'objects/grid';
+    @import 'objects/wrapper';
+    @import 'objects/input';
+    @import 'objects/button';
+}
+
+@layer utilities {
+    @import 'utilities/fill';
+    @import 'utilities/ratio';
+    @import 'utilities/object-fit';
+    @import 'utilities/remove-last-child-margin';
+    @import 'utilities/center';
+}
+
+@tailwind utilities;

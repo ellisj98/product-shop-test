@@ -1,0 +1,78 @@
+::selection {
+    background-color: theme('colors.brand.primary');
+    color: theme('colors.white');
+}
+
+p {
+    margin: 0 0 theme('spacing.paragraph');
+    max-width: 100%;
+}
+
+a {
+    transition: theme('transitionDuration.default');
+    color: inherit;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-top: 0;
+    margin-bottom: theme('spacing.heading');
+    line-height: theme('lineHeight.heading');
+    max-width: 100%;
+}
+
+@responsive {
+    .h1 {
+        font-size: theme('fontSize.4xl');
+        @screen from-ts {
+            font-size: theme('fontSize.5xl');
+        }
+    }
+}
+
+.h2 {
+    font-size: theme('fontSize.3xl');
+    @screen from-ts {
+        font-size: theme('fontSize.4xl');
+    }
+}
+
+.h3 {
+    font-size: theme('fontSize.lg');
+    @screen from-ts {
+        font-size: theme('fontSize.2xl');
+    }
+}
+
+.h4 {
+    font-size: theme('fontSize.lg');
+}
+
+.h6 {
+    @apply u-uppercase;
+    @apply u-text-sm;
+    @apply u-font-bold;
+}
+
+h1 {
+    @extend .h1;
+}
+h2 {
+    @extend .h2;
+}
+h3 {
+    @extend .h3;
+}
+h4 {
+    @extend .h4;
+}
+h5 {
+    @extend .h5;
+}
+h6 {
+    @extend .h6;
+}

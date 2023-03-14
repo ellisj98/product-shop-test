@@ -1,0 +1,42 @@
+:root {
+    --brand-primary: theme('colors.brand.primary');
+}
+
+html {
+    font-family: theme('fontFamily.body');
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: theme('colors.body');
+    font-weight: theme('fontWeight.normal');
+    line-height: theme('lineHeight.body');
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top);
+}
+
+img {
+    transition: theme('transitionDuration.default');
+}
+
+/*
+IOS status bar background color.
+- Class is generated in AppAdapter.vue.
+*/
+.is-platform-ios {
+    &:before {
+        content: '';
+        @apply u-bg-white;
+        @apply u-fixed;
+        @apply u-top-0;
+        @apply u-left-0;
+        @apply u-right-0;
+        @apply u-z-overlay-higher;
+        height: env(safe-area-inset-top);
+    }
+}

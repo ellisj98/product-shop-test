@@ -1,0 +1,24 @@
+.o-input {
+    $root: &;
+    @apply u-relative;
+    @apply u-py-2.5;
+    @apply u-px-4;
+    @apply u-border;
+    @apply u-border-solid;
+    @apply u-border-gray-500;
+    @apply u-rounded;
+    @apply u-bg-white;
+    @apply u-w-full;
+    @apply u-duration-default;
+    color: theme('colors.brand.secondary');
+    &--select {
+        @apply u-pr-10;
+        &.is-unselected {
+            @apply u-text-gray-600;
+        }
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}

@@ -1,0 +1,83 @@
+@use 'sass:math';
+
+// Return null rather than throwing an error if index is outside list range.
+@function nth-or-null($list, $index) {
+    @return if(length($list) >= $index, nth($list, $index), null);
+}
+
+/// Remove the unit of a length
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return math.div($number, ($number * 0 + 1));
+    }
+    @return $number;
+}
+
+// Returns a em value based on pixels
+@function em($pixels, $context: $font-size-base) {
+    $pixels-no-unit: strip-unit($pixels);
+    $context-no-unit: strip-unit($context);
+    @return math.div($pixels-no-unit, $context-no-unit) em;
+}
+
+// Converts a pixel value to rem
+@function convert-to-rem($value, $base-value: $font-size-base) {
+    $value: math.div(strip-unit($value), strip-unit($base-value) * 1rem);
+    /* stylelint-disable-next-line length-zero-no-unit */
+    @if ($value == 0rem) {
+        $value: 0;
+    }
+    @return decimal-round($value, 2);
+}
+
+// Converts a number of pixel values to rems
+@function rem($values, $base-value: $font-size-base) {
+    $max: length($values);
+    @if ($max == 1) {
+        @return convert-to-rem(nth($values, 1), $base-value);
+    }
+    $remValues: ();
+    @for $i from 1 through $max {
+        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    }
+    @return $remValues;
+}
+
+/// Map deep get function
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+// Round a number to specified digits.
+@function decimal-round($number, $digits: 3, $mode: round) {
+    $n: 1;
+    // $number must be a number
+    @if type-of($number) != number {
+        @warn '#{ $number } is not a number.';
+        @return $number;
+    }
+    // $digits must be a unitless number
+    @if type-of($digits) != number {
+        @warn '#{ $digits } is not a number.';
+        @return $number;
+    } @else if not unitless($digits) {
+        @warn '#{ $digits } has a unit.';
+        @return $number;
+    }
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+    @if $mode == round {
+        @return math.div(round($number * $n), $n);
+    } @else if $mode == ceil {
+        @return math.div(ceil($number * $n), $n);
+    } @else if $mode == floor {
+        @return math.div(floor($number * $n), $n);
+    } @else {
+        @warn '#{ $mode } is undefined keyword.';
+        @return $number;
+    }
+}
