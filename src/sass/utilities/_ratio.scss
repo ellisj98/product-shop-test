@@ -5,4 +5,7 @@
     &-1-1 {
         @include aspect-ratio(1, 1);
     }
+    &-page-header {
+        @include aspect-ratio(1390, 272);
+    }
 }
