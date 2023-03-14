@@ -2,24 +2,24 @@ import { defineStore } from 'pinia';
 import axios, { AxiosResponse } from 'axios';
 import RawProducts from '../../ts/Types/Product/TypeRawProducts';
 import ProductsResponse from '../../ts/Interfaces/HttpResponse/ProductsResponse';
-import ProductVariant from '../../ts/Interfaces/Product/ProductVariant';
+import RawProductData from '../../ts/Types/Product/RawProductData';
 
 interface State {
     products: RawProducts,
-    basketVariantProducts: ProductVariant[],
+    productsInBasket: RawProductData,
 }
 
 const useShopStore = defineStore('shop', {
     state: (): State => ({
         products: null,
-        basketVariantProducts: [],
+        productsInBasket: [],
     }),
     getters: {
         productsFetched: (state) : boolean => {
             return state.products !== null;
         },
-        getBasketTotalItems: (state) : number => {
-            return state.basketVariantProducts.length;
+        getAmountOfProductsInBasket: (state) : number => {
+            return state.productsInBasket.length;
         }
     },
     actions: {
