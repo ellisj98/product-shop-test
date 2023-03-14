@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppHeader from "./AppHeader.vue";
-import CartTotal from "./CartTotal.vue";
+import BasketTotal from "./BasketTotal.vue";
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import CartTotal from "./CartTotal.vue";
         <div class="u-flex u-items-center">
             <!-- TODO make this dynamic for the actual price -->
             <span class="u-mr-4">£105</span>
-            <cart-total :total="3" />
+            <basket-total />
         </div>
     </app-header>
 </template>
