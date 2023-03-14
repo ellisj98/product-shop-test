@@ -2,6 +2,7 @@ const tailwindColours = {
     'white': '#fff',
     brand: {
         'primary'         : '#9479FF',
+        'primary-dark'    : '#7552ff',
     },
     gray: {
         '100': '#fafbfc',

@@ -1,13 +1,21 @@
 .o-button {
-    @apply u-p-2.5;
+    @apply u-p-2;
     @apply u-px-7;
-    @apply u-rounded-3xl;
-    @apply u-border;
-    @apply u-border-solid;
-    @apply u-border-brand-secondary;
-    @apply u-bg-brand-secondary;
+    @apply u-bg-brand-primary;
     @apply u-text-white;
     @apply u-inline-block;
+    @apply u-uppercase;
+    @apply u-text-sm;
+    &:hover {
+        background-color: theme('colors.brand.primary-dark')
+    }
+    &--neutral {
+        @apply u-bg-gray-300;
+        @apply u-text-body;
+        &:hover {
+            @apply u-bg-gray-400;
+        }
+    }
     &:disabled {
         @apply u-cursor-not-allowed;
         opacity: 0.65;

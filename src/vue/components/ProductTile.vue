@@ -17,7 +17,7 @@ const productTitle: string = productVariantToShow.title;
 </script>
 
 <template>
-    <div class="u-border u-border-gray-300 u-p-3 u-bg-white u-shadow-lg u-h-full">
+    <div class="u-border u-border-gray-300 u-p-3 u-bg-white u-shadow-lg u-h-full u-flex u-flex-col">
         <div class="u-border-[10px] u-border-gray-200 u-mb-3">
             <img :src="productImage" />
         </div>
@@ -27,6 +27,10 @@ const productTitle: string = productVariantToShow.title;
             <div class="u-ml-5 u-flex-shrink-0 u-font-semibold">
                 {{ currencyFormatter(productVariantPrice) }}
             </div>
+        </div>
+        <div class="u-mt-auto u-flex">
+            <button class="o-button u-w-1/2">Add to cart</button>
+            <button class="o-button o-button--neutral u-w-1/2">Quick view</button>
         </div>
    </div>
 </template>
