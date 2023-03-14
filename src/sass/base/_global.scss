@@ -10,6 +10,7 @@ html {
     font-weight: theme('fontWeight.normal');
     line-height: theme('lineHeight.body');
     scroll-behavior: smooth;
+    @apply u-bg-gray-200;
 }
 
 body {
