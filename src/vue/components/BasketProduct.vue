@@ -13,7 +13,7 @@ const props = defineProps({
         required: true
     },
 });
-
+ 
 const productVariantToShow: ProductVariant = props.product.variants[0];
 const productVariantPrice: number = productVariantToShow.price;
 const productTitle: string = productVariantToShow.title;
@@ -26,7 +26,7 @@ const productTitle: string = productVariantToShow.title;
             <div class="u-w-3/4">
                 <div v-html="product.body_html" class="u-remove-last-child-margin u-mb-2 s-content">
                 </div>
-                <p class="u-text-brand-primary">
+                <p class="u-text-brand-primary u-mb-0">
                     {{ productTitle }}
                 </p>
             </div>
@@ -35,7 +35,7 @@ const productTitle: string = productVariantToShow.title;
                     {{ currencyFormatter(productVariantPrice) }}
                 </div>
                 <div class="u-mt-auto">
-                    <button class="o-button o-button--neutral u-mt-3 u-text-xs" @click="shopStore.removeProductFromBasket(product)" v-if="!productAddedToBasket">Remove</button>
+                    <button class="o-button o-button--neutral u-mt-3 u-text-xs" @click="shopStore.removeProductFromBasket(product)">Remove</button>
                 </div>
             </div>
         </div>

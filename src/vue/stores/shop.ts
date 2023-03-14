@@ -19,8 +19,20 @@ const useShopStore = defineStore('shop', {
         productsFetched: (state) : boolean => {
             return state.products !== null;
         },
-        getAmountOfProductsInBasket: (state) : number => {
+        amountOfProductsInBasket: (state) : number => {
             return state.productsInBasket.length;
+        },
+        // Returns a total of the variant price used for each product.
+        totalCostOfBasket() : number {
+            if (this.amountOfProductsInBasket > 0 && this.productsInBasket) {
+                let total = 0;
+                this.productsInBasket.forEach(product => {
+                    const price = Number(product.variants[0].price);
+                    total+= price;
+                });
+                return total;
+            }
+            return 0;
         }
     },
     actions: {
@@ -35,7 +47,9 @@ const useShopStore = defineStore('shop', {
             }
         },
         pushProductToBasket(product: RawProduct) {
-            this.productsInBasket.push(product);
+            if (!this.productsInBasket.includes(product)) {
+                this.productsInBasket.push(product);
+            }
         },
         removeProductFromBasket(product: RawProduct) {
             this.productsInBasket = this.productsInBasket.filter((productToFilter: RawProduct) => {

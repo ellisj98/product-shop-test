@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import AppHeader from "./AppHeader.vue";
-import BasketTotal from "./BasketTotal.vue";
+import BasketCount from "./BasketCount.vue";
+import useShopStore from '../stores/shop';
+import BasketTotalPrice from './BasketTotalPrice.vue';
+const shopStore = useShopStore();
 </script>
 
 <template>
     <app-header>
         <div class="u-flex u-items-center">
-            <!-- TODO make this dynamic for the actual price -->
-            <span class="u-mr-4">£105</span>
-            <basket-total />
+            <basket-total-price class="u-mr-4" />
+            <basket-count />
         </div>
     </app-header>
 </template>

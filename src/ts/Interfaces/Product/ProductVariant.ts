@@ -12,7 +12,7 @@ interface ProductVariant {
     taxable: boolean,
     featured_image: NullableString,
     available: boolean,
-    price: number,
+    price: string,
     grams: number,
     compare_at_price: NullableNumber,
     position: number,

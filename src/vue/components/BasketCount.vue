@@ -6,6 +6,6 @@ const shopStore = useShopStore();
 
 <template>
    <span class="u-block u-ratio-1-1 u-w-10 u-rounded-full u-bg-brand-primary u-text-white u-font-semibold u-relative u-flex-shrink-0">
-        <span class="u-center">{{ shopStore.getAmountOfProductsInBasket }}</span>
+        <span class="u-center">{{ shopStore.amountOfProductsInBasket }}</span>
    </span>
 </template>
