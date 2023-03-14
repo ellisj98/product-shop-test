@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import useShopStore from '../stores/shop';
+const shopStore = useShopStore();
+const products = shopStore.getProducts();
 </script>
 
 <template>
