@@ -16,7 +16,7 @@ const shopStore = useShopStore();
             <basket-product v-for="product in shopStore.productsInBasket" :key="product.id" :product="product" />
         </div>
         <div v-else>
-            <p>You have no products in your cart.</p>
+            <p class="u-text-sm">You have no products in your cart.</p>
         </div>
         <div class="u-mt-12 u-p-4 u-bg-gray-200 u-flex u-items-center u-justify-between u-text-sm">
             <div>
