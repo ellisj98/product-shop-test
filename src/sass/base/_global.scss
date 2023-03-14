@@ -7,7 +7,7 @@ html {
     box-sizing: border-box;
     font-size: $font-size-base;
     color: theme('colors.body');
-    font-weight: theme('fontWeight.normal');
+    font-weight: theme('fontWeight.medium');
     line-height: theme('lineHeight.body');
     scroll-behavior: smooth;
     @apply u-bg-gray-200;
