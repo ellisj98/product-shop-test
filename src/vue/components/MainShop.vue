@@ -12,11 +12,11 @@ shopStore.getProducts();
     <div class="u-py-10">
         <div class="o-wrapper">
             <div class="o-grid">
-                <div class="o-grid__col from-tvl:o-grid__col-9">
+                <div class="o-grid__col from-tvl:o-grid__col-8">
                     <loading-products v-if="!shopStore.productsFetched" />
                     <product-grid :products="shopStore.products" v-else />
                 </div>
-                <div class="o-grid__col from-tvl:o-grid__col-3">
+                <div class="o-grid__col from-tvl:o-grid__col-4">
                     <basket-summary />
                 </div>
             </div>

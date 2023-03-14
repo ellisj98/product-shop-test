@@ -30,8 +30,8 @@ const productAddedToBasket: ComputedRef<boolean> = computed(() : boolean => {
         <div class="u-border-[10px] u-border-gray-200 u-mb-3">
             <img :src="productImage" />
         </div>
-        <div class="u-flex">
-            <div v-html="product.body_html">
+        <div class="u-flex u-mb-3">
+            <div v-html="product.body_html" class="s-content u-remove-last-child-margin">
             </div>
             <div class="u-ml-5 u-flex-shrink-0 u-font-semibold">
                 {{ currencyFormatter(productVariantPrice) }}
@@ -39,7 +39,7 @@ const productAddedToBasket: ComputedRef<boolean> = computed(() : boolean => {
         </div>
         <div class="u-mt-auto u-flex">
             <button class="o-button u-w-1/2" @click="shopStore.pushProductToBasket(product)" v-if="!productAddedToBasket">Add to cart</button>
-            <button class="o-button u-w-1/2" v-else disabled>Added to cart</button>
+            <button class="o-button u-w-1/2" v-else disabled>Added</button>
             <button class="o-button o-button--neutral u-w-1/2">Quick view</button>
         </div>
    </div>

@@ -36,6 +36,11 @@ const useShopStore = defineStore('shop', {
         },
         pushProductToBasket(product: RawProduct) {
             this.productsInBasket.push(product);
+        },
+        removeProductFromBasket(product: RawProduct) {
+            this.productsInBasket = this.productsInBasket.filter((productToFilter: RawProduct) => {
+                return productToFilter.id !== product.id;
+            });
         }
     },
 });
