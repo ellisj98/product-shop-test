@@ -9,7 +9,7 @@ const shopStore = useShopStore();
 <template>
     <div class="u-bg-white u-p-6 u-border-t-[3px] u-border-t-brand-primary u-shadow-lg u-sticky u-top-6">
         <div class="u-flex u-items-center u-mb-4">
-            <h4 class="u-uppercase u-mb-0 u-mr-4">Cart</h4>
+            <h3 class="u-uppercase u-mb-0 u-mr-4">Cart</h3>
             <basket-count />
         </div>
         <div v-if="shopStore.amountOfProductsInBasket > 0" class="u-border-b u-border-gray-300">

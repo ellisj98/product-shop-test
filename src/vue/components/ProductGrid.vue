@@ -12,7 +12,7 @@ const props = defineProps({
 
 <template>
     <div class="o-grid">
-        <div class="o-grid__col from-tvl:o-grid__col-4" v-for="product in products" :key="product.id">
+        <div class="o-grid__col from-ts:o-grid__col-6 from-tl:o-grid__col-4" v-for="product in products" :key="product.id">
             <product-tile :product="product" />
         </div>
     </div>
