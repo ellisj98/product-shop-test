@@ -51,7 +51,7 @@ export const sortingProperties = ref<SortingOption | null>(null);
 
 export const getSortedProducts = (products: RawProduct[]) => {
 
-    // Lets clone here because products is reactive and we don't want to sort it
+    // Lets clone here to be safe
     const clonedProducts = cloneDeep(products);
     const sortingPropertiesValues = sortingProperties as Ref<SortingOption>;
 
