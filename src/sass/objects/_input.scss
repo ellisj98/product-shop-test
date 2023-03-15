@@ -10,7 +10,6 @@
     @apply u-bg-white;
     @apply u-w-full;
     @apply u-duration-default;
-    color: theme('colors.brand.secondary');
     &--select {
         @apply u-pr-10;
         &.is-unselected {
